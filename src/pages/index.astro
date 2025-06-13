@@ -32,7 +32,7 @@ import {Home}  from '../components/Home.tsx';
 			"
 		>
 			<div class="flex flex-col justify-evenly">
-			<Slist title="Home"/>
+			<Slist title="Home" id="home"/>
 			<Slist title="Orders"/>
 			<Slist title="Plans"/>
 			<Slist title="Favorites"/>
@@ -40,11 +40,11 @@ import {Home}  from '../components/Home.tsx';
 			<Slist title="Support / Help"/>
 			</div>
 			<div class="h-100 w-full py-0.5 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black grid-rows-subgrid row-start-2 ">
-			<!-- <Block -->
+			<!-- <Block/> -->
 			<!-- <div class="bg-red-200 w-full h-full"></div> -->
 			</div>
 		</aside>
-		<main class="w-full h-full relative">
+		<main class="w-full h-14/18 relative items-center justify-center flex">
 			<Home client:load/>
 		</main>
 		</section>
