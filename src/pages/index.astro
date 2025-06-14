@@ -2,55 +2,58 @@
 import Layout from '../layouts/Layout.astro';
 import Menulogo from '../assets/menu.svg';
 import background from '../assets/background-page.webp';
-import Slist from '../components/ListSections.astro';
-import Block from '../components/BlockDiv.astro';
-import {Home}  from '../components/Home.tsx';
+import { Section } from '../components/Section.tsx';
+import { SectionList } from '../components/SectionList.tsx';
+import BlockDiv from '../components/BlockDiv.astro';
 
 ---
 
 
 <Layout>
   <container class="w-full h-screen flex items-center justify-center relative top-0 left-0 z-50 bg-[#00000f] overflow-hidden">
-	<img src=`${background.src}` class="h-screen w-full absolute bg-contain object-cover opacity-60 top-0 left-0" alt="Background Image" />
-	<div class="fixed w-11/12 h-5/6 bg-[#cbd5e1]/7 backdrop-blur-xl rounded-md shadow-md overflow-hidden">
+  <img src=`${background.src}` class="h-screen w-full absolute bg-contain object-cover opacity-60 top-0 left-0" alt="Background Image" />
+	<div class="fixed w-11/12 h-5/6 bg-[#cbd5e1]/7 backdrop-blur-xl rounded-md shadow-md ">
 		<header class="-w-full h-2/18 border-b-4 flex items-center relative shadow px-6 space-between" style="border-color: rgba(0,0,15,0.08)">
 			<Menulogo
 				class="scale-132 text-white"
 				style="filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.534))"
 			/>
-				<span class="titulo text-white scale-220 tracking-wide left-1/2 -translate-x-1/2 relative">DASHBOARD</span>
+			<span class="titulo text-white scale-220 tracking-wide left-1/2 -translate-x-1/2 relative"
+			>DASHBOARD</span>
 		</header>
 		<section
-		class="w-full h-16/18 grid"
-		style="grid-template-columns: auto 1fr"
+			class="grid min-h-16/18 items-center"
+			style={{
+			'gridTemplateColumns' : 'auto 1fr'
+				
+			}}
 		>
-		<aside
-		 	class="w-60 border-r-4 grid relative text-center h-full "
-		 	style="
-			border-color: rgba(0,0,15,0.08);
-			grid-template-rows: 1fr 1fr;
-			"
+		<aside 
+		 	class="w-60 border-r-4 grid relative text-center min-h-full "
+		 	style={{
+			'borderColor' : 'rgba(0,0,15,0.08)',
+			'gridTemplateRows' : '1fr auto'
+            }}
 		>
-			<div class="flex flex-col justify-evenly">
-			<Slist title="Home" id="home"/>
-			<Slist title="Orders"/>
-			<Slist title="Plans"/>
-			<Slist title="Favorites"/>
-			<Slist title="History"/>
-			<Slist title="Support / Help"/>
+			<div class="flex flex-col gap-1 justify-evenly ">
+				<SectionList title='Home'/>
+				<SectionList title='Orders' />
+				<SectionList title='Plans' />
+				<SectionList title='Favorites' />
+				<SectionList title='History' />
+				<SectionList title='Support / Help' />
 			</div>
-			<div class="h-100 w-full py-0.5 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black grid-rows-subgrid row-start-2 ">
-			<!-- <Block/> -->
-			<!-- <div class="bg-red-200 w-full h-full"></div> -->
+			<div class="h-60 w-full py-0.5 mt-1 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black flex items-center">
+			<BlockDiv/>
 			</div>
 		</aside>
-		<main class="w-full h-14/18 relative items-center justify-center flex">
-			<Home client:load/>
-		</main>
+		<Section client:only />
+
 		</section>
 
 	</div>
   </container>
+
 </Layout>
 
 
@@ -59,8 +62,30 @@ import {Home}  from '../components/Home.tsx';
 
 	@import "tailwindcss";
 
+
+
+
 .titulo{
 	font-family: "Pixelify Sans", sans-serif;
 	filter: drop-shadow(0px 0px 2.4px rgba(255, 255, 255, 0.2))
 }
+
+	@keyframes easeBox{
+		0%{
+			transform: translateX(-1000px);
+		}
+		100%{
+			transform: translateX(0px);
+		}
+	}
+
+	@keyframes easeMessage{
+		0%{
+			transform: translateY(-1000px);
+		}
+		100%{
+			transform: translateY(0px);
+		}
+	}
+
 </style>

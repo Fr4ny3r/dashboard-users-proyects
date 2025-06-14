@@ -1,12 +1,31 @@
 ---
-
+import Play from '../assets/play.svg'
 ---
 
-<canvas class="w-full"></canvas>
+    <canvas  class="canvas w-full "></canvas>
+        <span class="canvas-span bg-black/50 opacity-0 py-6.5 px-7 text-white scale-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 ">
+            <Play/>
+        </span>
 
 
+        <style>
+        
+        .canvas-span{
+            transition: all .3s;
+        }
+
+
+        .canvas-span:hover{
+            opacity: 100;
+            cursor: pointer;
+        
+        }
+
+        </style>
 
 <script>
+
+
 
 const canvas = document.querySelector('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -89,6 +108,7 @@ function placeFood() {
     board.forEach(row => row.fill(0));
     board[food.position.y][food.position.x] = 2;
 }
+let requestId : number;
 
 function update(time = 0) {
     const deltaTime = time - lastTime;
@@ -104,7 +124,7 @@ function update(time = 0) {
     }
 
     draw();
-    window.requestAnimationFrame(update);
+    requestId = window.requestAnimationFrame(update);
 }
 
 
@@ -144,11 +164,24 @@ function draw(){
 
     });
 
+const playCanvas = false
 
 }
 
 update()
 
+document.querySelector(".canvas-span")?.addEventListener("click", ()=>{
+    if (requestId){
+        cancelAnimationFrame(requestId)
+        requestId = 0;
+    }else{
+update()
+    }
+})
+
     board[food.position.x][food.position.y] = 2
+
+
+
 
 </script>
