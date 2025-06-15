@@ -16,7 +16,7 @@ export function Section() {
       function handleSection(asd : string){
          setSection(asd)
         // console.log(section)
-        section == asd ? setactive(true) : setactive(false)
+        section == asd ? setactive(true) : setactive(false) 
       }
 
       const sections = ["Home","Orders","Plans","Favorites","History","Support / Help"]

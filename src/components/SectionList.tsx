@@ -9,12 +9,18 @@ type SectionsPropss = {
 
 function TempSectList({ tituloo } : SectionsPropss) {
 
-    const [titulo, setTitulo] = useState('')
+    const [titulo, setTitulo] = useState<string>("")
+    const [focus, setFocus] = useState<boolean>(false)
 
 
     const handletitulo = () =>{
         setTitulo(tituloo)
-        console.log(tituloo)
+        
+    }
+
+    const handletituloo = () =>{
+        setTitulo('')
+        
     }
 
   return (
@@ -22,9 +28,14 @@ function TempSectList({ tituloo } : SectionsPropss) {
       id={`${tituloo}`}
       className={`py-4 hover:py-5 bg-[#00000f]/30 backdrop-blur-xl text-lg text-white hover:cursor-pointer hover:bg-[#00000f]/10 transition-all delay-200`}
       style={{ fontFamily: '"Pixelify Sans", sans-serif' }}
-      onClick={handletitulo}
+      onMouseEnter = {()=>{handletitulo}}
+      onClick = {()=>{titulo == tituloo ? setFocus(true) : setFocus(false)}}
+      onMouseLeave = {()=>{handletituloo}}
+      
+
     >
-      {tituloo}
+      {focus ? (<i><b>{tituloo}</b></i>) : tituloo}
+
     </span>
   );
 

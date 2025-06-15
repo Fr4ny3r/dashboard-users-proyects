@@ -1,5 +1,10 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Orders } from './sections/Orders.tsx';
+// import type { Device } from './typesProducts';
+import { GamesPc, GamesConsole, GamesAndroid } from './typesProducts';
+
+
+
 
 
 
@@ -7,7 +12,6 @@ import { Orders } from './sections/Orders.tsx';
 type Props = {
     title : string
 }
-
 
 
     export function Home(){
@@ -39,26 +43,22 @@ type Props = {
 
 export function SectionMain({title} : Props){
 
-    
-// useEffect(()=>{
-// SectionElement()
-// },[])
-
-
-
-
-
+    const products = [GamesPc, GamesConsole, GamesAndroid]
 
     return(
         <section
-            className="bg-blue-500/2 flex overflow-hidden backdrop-blur-7 -translate-y-2  relative h-28/32 w-17/18 rounded-l"
+            className="bg-blue-500/2 overflow-hidden backdrop-blur-7 -translate-y-2  relative h-28/32 w-17/18 rounded-l"
         >
-            {title == "Support / Help" ? (<Help />) : ("")}
-            {title == "History" ? (<History />) : ("")}
-            {title == "Favorites" ? (<Favorites />) : ("")}
-            {title == "Plans" ? (<Plans />) : ("")}
-            {title == "Orders" ? (<Orders />) : ("")}
-            {title == "Home" ? (<Home />) : ("")}
+            {title ? (
+                title === "Support / Help" ? <Help />
+                : title === "History" ? <History />
+                : title === "Favorites" ? <Favorites />
+                : title === "Plans" ? <Plans />
+                : title === "Orders" ? <Orders products={products} />
+                : title === "Home" ? <Home />
+                : <span>Cargando...</span>
+            ) : (<span>Cargando...</span>)}
+
         </section>
     )
 }

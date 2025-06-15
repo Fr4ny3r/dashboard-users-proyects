@@ -36,18 +36,19 @@ import BlockDiv from '../components/BlockDiv.astro';
             }}
 		>
 			<div class="flex flex-col gap-1 justify-evenly ">
-				<SectionList title='Home'/>
-				<SectionList title='Orders' />
-				<SectionList title='Plans' />
-				<SectionList title='Favorites' />
-				<SectionList title='History' />
-				<SectionList title='Support / Help' />
+				<SectionList client:load title='Home'/>
+				<SectionList client:load title='Orders' />
+				<SectionList client:load title='Plans' />
+				<SectionList client:load title='Favorites' />
+				<SectionList client:load title='History' />
+				<SectionList client:load title='Support / Help' />
 			</div>
 			<div class="h-60 w-full py-0.5 mt-1 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black flex items-center">
 			<BlockDiv/>
 			</div>
 		</aside>
 		<Section client:only />
+		
 
 		</section>
 
