@@ -2,6 +2,8 @@
 import Play from '../assets/play.svg'
 ---
 
+
+
     <canvas  class="canvas w-full "></canvas>
         <span class="canvas-span bg-black/50 opacity-0 py-6.5 px-7 text-white scale-300 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 ">
             <Play/>
@@ -24,6 +26,7 @@ import Play from '../assets/play.svg'
         </style>
 
 <script>
+
 
 
 
@@ -79,6 +82,7 @@ const food = {
 
 let dropCounter = 0;
 let lastTime = 0;
+let numColor = 0;
 
 
 function movePiezaTowardFood() {
@@ -137,9 +141,12 @@ function draw(){
     board.forEach((row, y) => {
         row.forEach((value, x)=>{
             if (value === 1){
-                ctx.fillStyle = '#5f5'
+
                 // ctx.fillStyle = '#20a'
+                ctx.fillStyle = '#5f5'
                 ctx.fillRect(x, y, 1, 1)
+
+                
             }
         })
 

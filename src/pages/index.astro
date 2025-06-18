@@ -1,37 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Menulogo from '../assets/menu.svg';
-import background from '../assets/background-page.webp';
+import Sidebar1 from '../assets/layout-sidebar-left-expand.svg';
+import Sidebar2 from '../assets/layout-sidebar-right-expand.svg';
+import PNGbackground from '../assets/background-PNG.webp';
 import { Section } from '../components/Section.tsx';
 import { SectionList } from '../components/SectionList.tsx';
 import BlockDiv from '../components/BlockDiv.astro';
-
+import SidebarSvg from '../components/SidebarSvg.astro'
 ---
 
 
 <Layout>
-  <container class="w-full h-screen flex items-center justify-center relative top-0 left-0 z-50 bg-[#00000f] overflow-hidden">
-  <img src=`${background.src}` class="h-screen w-full absolute bg-contain object-cover opacity-60 top-0 left-0" alt="Background Image" />
-	<div class="fixed w-11/12 h-5/6 bg-[#cbd5e1]/7 backdrop-blur-xl rounded-md shadow-md ">
-		<header class="-w-full h-2/18 border-b-4 flex items-center relative shadow px-6 space-between" style="border-color: rgba(0,0,15,0.08)">
-			<Menulogo
-				class="scale-132 text-white"
-				style="filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.534))"
-			/>
+  <container class="w-full h-screen flex items-center justify-center relative top-0 left-0 z-50 bg-[#1e1e1e] overflow-hidden">
+  <img src=`${PNGbackground.src}` class="user-none h-screen w-full absolute bg-contain object-cover opacity-7 top-0 left-0" alt="Background Image" />
+  <!-- <img src=`${background.src}` class="h-screen w-full absolute bg-contain object-cover opacity-60 top-0 left-0" alt="Background Image" /> -->
+	<div class="fixed w-11/12 overflow-hidden h-5/6 bg-[#1e1e1e] rounded-md shadow-md ">
+		<header class="-w-full h-2/18 border-b-4 flex items-center relative shadow px-6 space-between" style="border-color: rgba(0,0,0,0.1)">
+			<SidebarSvg />
 			<span class="titulo text-white scale-220 tracking-wide left-1/2 -translate-x-1/2 relative"
 			>DASHBOARD</span>
 		</header>
 		<section
-			class="grid min-h-16/18 items-center"
+			class="grid h-16/18"
 			style={{
-			'gridTemplateColumns' : 'auto 1fr'
+			'gridTemplateColumns' : 'auto 1fr',
+			'gridTemplateRows' : '1oopx'
 				
 			}}
 		>
 		<aside 
-		 	class="w-60 border-r-4 grid relative text-center min-h-full "
+			id={"asideBar"}
+		 	class="w-60  border-r-4 grid relative text-center h-full -left-full xl:left-0 "
 		 	style={{
-			'borderColor' : 'rgba(0,0,15,0.08)',
+			'borderColor' : 'rgba(0,0,0,0.1)',
 			'gridTemplateRows' : '1fr auto'
             }}
 		>
@@ -43,17 +45,20 @@ import BlockDiv from '../components/BlockDiv.astro';
 				<SectionList client:load title='History' />
 				<SectionList client:load title='Support / Help' />
 			</div>
-			<div class="h-60 w-full py-0.5 mt-1 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black flex items-center">
+			<div id="canvasBox" class="h-60 w-full py-0.5 mt-1 -px-1 bottom-0 relative w-1/5 h-4/12 bg-black flex items-center">
 			<BlockDiv/>
 			</div>
 		</aside>
+
 		<Section client:only />
-		
 
 		</section>
 
 	</div>
   </container>
+
+
+
 
 </Layout>
 
@@ -63,8 +68,15 @@ import BlockDiv from '../components/BlockDiv.astro';
 
 	@import "tailwindcss";
 
+@media screen and (max-height : 816px){
+	#canvasBox{
+		display: none;
+	}
+}
 
-
+#asd{
+	background: red;
+}
 
 .titulo{
 	font-family: "Pixelify Sans", sans-serif;
@@ -73,19 +85,37 @@ import BlockDiv from '../components/BlockDiv.astro';
 
 	@keyframes easeBox{
 		0%{
-			transform: translateX(-1000px);
+			opacity: 0%;
 		}
 		100%{
-			transform: translateX(0px);
+			opacity: 100%;
+		}
+	}
+
+	@keyframes easeMario{
+		0%{
+			opacity: 0%;
+		}
+		100%{
+			opacity: 100%;
 		}
 	}
 
 	@keyframes easeMessage{
 		0%{
-			transform: translateY(-1000px);
+			opacity: 0%;
 		}
 		100%{
-			transform: translateY(0px);
+			opacity: 100%;
+		}
+	}
+
+	@keyframes easeInput{
+		0%{
+			opacity: 0%;
+		}
+		100%{
+			opacity: 100%;
 		}
 	}
 

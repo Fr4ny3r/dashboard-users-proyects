@@ -26,7 +26,7 @@ function TempSectList({ tituloo } : SectionsPropss) {
   return (
     <span
       id={`${tituloo}`}
-      className={`py-4 hover:py-5 bg-[#00000f]/30 backdrop-blur-xl text-lg text-white hover:cursor-pointer hover:bg-[#00000f]/10 transition-all delay-200`}
+      className={`py-4 h-full hover:py-5 bg-[#1e1e1e] brightness-85 text-lg text-white hover:cursor-pointer hover:bg-[#1e1e1e] hover:brightness-90 transition-all duration-250`}
       style={{ fontFamily: '"Pixelify Sans", sans-serif' }}
       onMouseEnter = {()=>{handletitulo}}
       onClick = {()=>{titulo == tituloo ? setFocus(true) : setFocus(false)}}

@@ -1,4 +1,4 @@
-import { useState,useEffect, StrictMode } from "react";
+import { useState } from "react";
 import { SectionMain } from "./SectionMain";
 
 
@@ -33,7 +33,7 @@ export function Section() {
   return (
 
         // active ?
-        <main className="w-full h-full relative items-center justify-center flex">
+        <main id="mainBox" className="mainBox xl:relative xl:h-full h-28/32  absolute w-full  items-center overflow-hidden justify-center flex">
            <SectionMain title={section} />
         </main>
         // : console.log(section)

@@ -4,14 +4,10 @@ import { Orders } from './sections/Orders.tsx';
 import { GamesPc, GamesConsole, GamesAndroid } from './typesProducts';
 
 
-
-
-
-
-
 type Props = {
     title : string
 }
+
 
 
     export function Home(){
@@ -47,7 +43,7 @@ export function SectionMain({title} : Props){
 
     return(
         <section
-            className="bg-blue-500/2 overflow-hidden backdrop-blur-7 -translate-y-2  relative h-28/32 w-17/18 rounded-l"
+            className="backdrop-brightness-95 flex flex-rows wrap overflow-hidden justify-between p-5 relative h-28/32 w-30/32 rounded-lg"
         >
             {title ? (
                 title === "Support / Help" ? <Help />
